@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bg">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+
+            android:src="@drawable/ic_drawer"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_header" />
+
+        <TextView
+            android:id="@+id/txt_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/app_name_real"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="@dimen/homeFrg_sideMargin"
+
+            android:src="@drawable/ic_shopping_cart"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_header" />
+
+
+
+
+
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+            android:layout_marginTop="@dimen/homeFrg_sideMargin"
+
+            android:layout_marginRight="@dimen/homeFrg_sideMargin"
+
+            android:background="@color/white"
+            android:queryHint="@string/str_search_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar"
+            >
+
+
+        <ImageView
+            android:id="@+id/img_main_banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginRight="@dimen/homeFrg_sideMargin"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fruits_app"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+
+        <!-- SubHeading Fruit Category section -->
+        <TextView
+            android:id="@+id/txt_subHead_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+            android:layout_marginTop="@dimen/homeFrg_sideMargin"
+            android:text="Categories"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_main_banner" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category_fruits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginRight="@dimen/homeFrg_sideMargin"
+app:layout_constraintTop_toBottomOf="@+id/txt_subHead_categories"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- SubHeading Fruits section -->
+        <TextView
+            android:id="@+id/txt_subHead_fruits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+            android:layout_marginTop="@dimen/homeFrg_sideMargin"
+            android:text="Fruits"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_category_fruits" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fruits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginRight="@dimen/homeFrg_sideMargin"
+            app:layout_constraintTop_toBottomOf="@+id/txt_subHead_fruits"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
