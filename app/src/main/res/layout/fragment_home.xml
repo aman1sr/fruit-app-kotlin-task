@@ -118,9 +118,15 @@
             android:id="@+id/rv_category_fruits"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
+            app:reverseLayout="true"
+
             android:layout_marginLeft="@dimen/homeFrg_sideMargin"
             android:layout_marginTop="20dp"
+
+            tools:listitem="@layout/fruits_category_item"
 
             android:layout_marginRight="@dimen/homeFrg_sideMargin"
 app:layout_constraintTop_toBottomOf="@+id/txt_subHead_categories"
@@ -147,10 +153,12 @@ app:layout_constraintTop_toBottomOf="@+id/txt_subHead_categories"
             android:id="@+id/rv_fruits"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+
+            tools:listitem="@layout/fruit_item"
+
+
             android:layout_marginLeft="@dimen/homeFrg_sideMargin"
             android:layout_marginTop="20dp"
-
             android:layout_marginRight="@dimen/homeFrg_sideMargin"
             app:layout_constraintTop_toBottomOf="@+id/txt_subHead_fruits"
             app:layout_constraintEnd_toEndOf="parent"
