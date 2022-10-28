@@ -18,16 +18,14 @@ init {
     getFruitProperties()
 }
 
-    // todo: update the get CAll & below f() wrt MarsRealStateGrid app
     private fun getFruitProperties() {
         viewModelScope.launch {
             try {
-                Log.d(TAG, "getFruitProperties: "+FruitApi.retrofitService.getFruitList())
+                Log.d(TAG, "getFruitProperties: "+FruitApi.retrofitService.getFruitList().get(0).message)
             } catch (e: Exception) {
-
+                Log.d(TAG, "crashhhh>>> "+ e.localizedMessage)
             }
         }
     }
-
 
 }
