@@ -19,8 +19,12 @@ private val retrofit = Retrofit.Builder()
 
 
 interface FruitApiService {
+
     @GET("product/searchproductbycatagory_6prod?limit=6")
-     fun getFruitList():Call<String>
+     fun getFruitList():Call<FruitModel>
+
+//     @GET("product/searchproductbycatagory_6prod?limit=6")
+//     fun getFruitList():Call<String>
 
 }
 

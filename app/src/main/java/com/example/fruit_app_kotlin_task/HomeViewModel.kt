@@ -19,6 +19,27 @@ init {
 }
 
     private fun getFruitProperties() {
+
+        FruitApi.retrofitService.getFruitList().enqueue(
+            object :Callback<FruitModel>{
+                override fun onResponse(call: Call<FruitModel>, response: Response<FruitModel>) {
+                    try {
+                        Log.d(TAG, "onResponse: " + response.body())
+
+                    } catch (e: Exception) {
+                        Log.d(TAG, "error onResponse::: "+e.localizedMessage)
+                    }
+
+                }
+
+                override fun onFailure(call: Call<FruitModel>, t: Throwable) {
+                    Log.d(TAG, "onFailure: failed>>>")
+                }
+
+            }
+        )
+
+        /*
   FruitApi.retrofitService.getFruitList().enqueue(
       object :Callback<String>{
           override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -32,7 +53,8 @@ init {
           }
 
       }
-  )
+  )*/
+
     }
 
 
