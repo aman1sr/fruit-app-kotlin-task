@@ -28,7 +28,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     buildFeatures {
         viewBinding true
@@ -43,11 +43,15 @@ dependencies {
     def version_glide = "4.8.0"
     def version_recyclerview = "1.1.0"
 
+
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+
     // Moshi
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+//    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
     // Retrofit with Moshi Converter
-    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+//    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
 //    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
 

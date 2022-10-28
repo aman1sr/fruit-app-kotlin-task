@@ -18,15 +18,21 @@ init {
     getFruitProperties()
 }
 
-    // todo: update the get CAll & below f() wrt MarsRealStateGrid app
     private fun getFruitProperties() {
-        viewModelScope.launch {
-            try {
-                Log.d(TAG, "getFruitProperties: "+FruitApi.retrofitService.getFruitList())
-            } catch (e: Exception) {
+  FruitApi.retrofitService.getFruitList().enqueue(
+      object :Callback<String>{
+          override fun onResponse(call: Call<String>, response: Response<String>) {
+              Log.d(TAG, "onResponse: "+response.body().toString()
+              )
+          }
 
-            }
-        }
+          override fun onFailure(call: Call<String>, t: Throwable) {
+              Log.d(TAG, "onFailure:>> "+call.toString()
+              )
+          }
+
+      }
+  )
     }
 
 
