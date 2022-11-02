@@ -21,7 +21,7 @@ init {
     private fun getFruitProperties() {
         viewModelScope.launch {
             try {
-                Log.d(TAG, "getFruitProperties: "+FruitApi.retrofitService.getFruitList().get(0).message)
+                Log.d(TAG, "getFruitProperties: "+FruitApi.retrofitService.getFruitList().totalRec)
             } catch (e: Exception) {
                 Log.d(TAG, "crashhhh>>> "+ e.localizedMessage)
             }

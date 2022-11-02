@@ -23,7 +23,7 @@ private val retrofit = Retrofit.Builder()
 
 interface FruitApiService {
     @GET("product/searchproductbycatagory_6prod?limit=6")
-    suspend fun getFruitList():List<FruitModel>
+    suspend fun getFruitList():FruitModel
 }
 
 object FruitApi{
