@@ -12,49 +12,26 @@ import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-val TAG = "HomeViewModel_d"
+    val TAG = "HomeViewModel_d"
 
-init {
-    getFruitProperties()
-}
+    init {
+        getFruitProperties()
+    }
 
     private fun getFruitProperties() {
 
-        FruitApi.retrofitService.getFruitList().enqueue(
-            object :Callback<FruitModel>{
-                override fun onResponse(call: Call<FruitModel>, response: Response<FruitModel>) {
-                    try {
-                        Log.d(TAG, "onResponse: " + response.body())
-
-                    } catch (e: Exception) {
-                        Log.d(TAG, "error onResponse::: "+e.localizedMessage)
-                    }
-                }
-
-                override fun onFailure(call: Call<FruitModel>, t: Throwable) {
-                    Log.d(TAG, "onFailure: failed>>>")
-                }
-
+        viewModelScope.launch {
+            try {
+                Log.d(
+                    TAG,
+                    "getFruitProperties: " + FruitApi.retrofitService.getFruitList().totalRec
+                )
+            } catch (e: Exception) {
+                Log.d(TAG, "crashhhh>>> " + e.localizedMessage)
             }
-        )
 
-        /*
-  FruitApi.retrofitService.getFruitList().enqueue(
-      object :Callback<String>{
-          override fun onResponse(call: Call<String>, response: Response<String>) {
-              Log.d(TAG, "onResponse: "+response.body().toString()
-              )
-          }
 
-          override fun onFailure(call: Call<String>, t: Throwable) {
-              Log.d(TAG, "onFailure:>> "+call.toString()
-              )
-          }
-
-      }
-  )*/
+        }
 
     }
-
-
 }

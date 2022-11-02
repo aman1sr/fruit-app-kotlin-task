@@ -10,6 +10,10 @@ import retrofit2.http.GET
 private const val BASE_URL = "https://mercadosagricolaspr.com/farmer-dev/apis/"
 
 
+//
+//private val moshi = Moshi.Builder()
+//    .add(KotlinJsonAdapterFactory())
+//    .build()
 
 
 private val retrofit = Retrofit.Builder()
@@ -21,11 +25,7 @@ private val retrofit = Retrofit.Builder()
 interface FruitApiService {
 
     @GET("product/searchproductbycatagory_6prod?limit=6")
-     fun getFruitList():Call<FruitModel>
-
-//     @GET("product/searchproductbycatagory_6prod?limit=6")
-//     fun getFruitList():Call<String>
-
+    suspend fun getFruitList():FruitModel
 }
 
 object FruitApi{
