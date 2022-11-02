@@ -29,7 +29,6 @@ init {
                     } catch (e: Exception) {
                         Log.d(TAG, "error onResponse::: "+e.localizedMessage)
                     }
-
                 }
 
                 override fun onFailure(call: Call<FruitModel>, t: Throwable) {

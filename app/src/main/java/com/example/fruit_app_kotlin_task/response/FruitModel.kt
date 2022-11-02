@@ -2,12 +2,9 @@ package com.example.fruit_app_kotlin_task.response
 
 import com.google.gson.annotations.SerializedName
 
-data class FruitModel(
-
-    @SerializedName("cid"      ) var cid      : String?          = null,
-    @SerializedName("category" ) var category : String?          = null,
-    @SerializedName("cdesc"    ) var cdesc    : String?          = null,
-    @SerializedName("c_img"    ) var cImg     : String?          = null,
-    @SerializedName("cdata"    ) var cdata    : ArrayList<Data> = arrayListOf()
-
+data class FruitModel (
+    @SerializedName("status"    ) var status   : Boolean?        = null,
+    @SerializedName("message"   ) var message  : String?         = null,
+    @SerializedName("total_rec" ) var totalRec : Int?            = null,
+    @SerializedName("data"      ) var data     : ArrayList<Data> = arrayListOf()
 )

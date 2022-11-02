@@ -4,7 +4,7 @@ import com.example.fruit_app_kotlin_task.response.FruitModel
 
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://mercadosagricolaspr.com/farmer-dev/apis/"
@@ -13,7 +13,7 @@ private const val BASE_URL = "https://mercadosagricolaspr.com/farmer-dev/apis/"
 
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
 
