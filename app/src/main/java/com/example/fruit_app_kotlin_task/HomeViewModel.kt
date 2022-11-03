@@ -18,13 +18,19 @@ class HomeViewModel : ViewModel() {
 
     lateinit var fruitsCategories: ArrayList<FruitsCategory>
 
+//    lateinit var categorySize: Int        // todo: why not??
+
+
+    var categorySize: Int = 0
+
+
 
     init {
         getFruitProperties()
     }
 
     fun getFruitCategoryList(): ArrayList<FruitsCategory>{
-        fruitsCategories = FruitsCategory.createFruitList(7)       // to here <-- put in data via API
+        fruitsCategories = FruitsCategory.createFruitList(categorySize)       // to here <-- put in data via API
 
         return fruitsCategories
     }
@@ -32,12 +38,14 @@ class HomeViewModel : ViewModel() {
 
 
     private fun getFruitProperties() {
+
         viewModelScope.launch {
             try {
                 Log.d(
-                    TAG,
-                    "getFruitProperties: " + FruitApi.retrofitService.getFruitList().totalRec   // it will get a singleton Retrofit object that implements FruitApiService
-                )
+                    TAG, "getFruitProperties: " + FruitApi.retrofitService.getFruitList().totalRec   )   // it will get a singleton Retrofit object that implements FruitApiService
+
+                categorySize = FruitApi.retrofitService.getFruitList().totalRec!!
+
             } catch (e: Exception) {
                 Log.d(TAG, "crashhhh>>> " + e.localizedMessage)
             }
