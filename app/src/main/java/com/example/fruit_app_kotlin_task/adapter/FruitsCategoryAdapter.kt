@@ -13,7 +13,6 @@ import com.example.fruit_app_kotlin_task.model.FruitsCategory
 class FruitsCategoryAdapter(private val mFruits: List<FruitsCategory>) : RecyclerView.Adapter<FruitsCategoryAdapter.ViewHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
