@@ -46,7 +46,7 @@ class HomeViewModel : ViewModel() {
 
 
     init {
-        getFruitProperties()
+        getfruitList()
     }
 
 //    fun getFruitCategoryList(): ArrayList<FruitsCategory>{

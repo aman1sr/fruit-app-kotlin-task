@@ -39,19 +39,33 @@ class HomeFragment : Fragment() {
                     /* Manual way of using Rec */
         viewModel.categorySize.observe(viewLifecycleOwner){
 
-            val adapterFruitCategory = FruitsCategoryAdapter(FruitsCategory.createFruitList(it))
-            binding.rvCategoryFruits.adapter = adapterFruitCategory
+//            val adapterFruitCategory = FruitsCategoryAdapter(FruitsCategory.createFruitList(it))
+//            binding.rvCategoryFruits.adapter = adapterFruitCategory
 
-            Log.d(TAG, "LiveData extracted successfully:::::::")
-            viewModel.getfruitList()
         }
 
         viewModel.fruitList.observe(viewLifecycleOwner){
 
             var fruitList : FruitModel = it
-            var size = fruitList.totalRec
+            var size:Int = fruitList.totalRec!!
 
             Log.d(TAG, "Livedata FruitModel: "+fruitList.data.get(0).cdata )
+
+            var fruitCat = ArrayList<FruitsCategory>()
+
+            /* extracting Fruit list of Fruit Category List */
+            for (i in 0..size-1) {
+                val name  = fruitList.data.get(i).category
+                val imgUrl  = fruitList.data.get(i).cImg
+
+                var fruits = FruitsCategory("$name","$imgUrl")
+                fruitCat.add(fruits)
+            }
+
+            val adapterFruitCategory = FruitsCategoryAdapter(fruitCat)
+            binding.rvCategoryFruits.adapter = adapterFruitCategory
+
+            /* extracting Fruit list of Cat-1 */
 
             val fruitSize = fruitList.data.get(0).cdata.size
             var fruitCatfruitList : ArrayList<Fruits> = arrayListOf()
@@ -60,7 +74,6 @@ class HomeFragment : Fragment() {
                 val name  = fruitList.data.get(0).cdata.get(i).name
                 val imgUrl  = fruitList.data.get(0).cdata.get(i).image
                 val price  = fruitList.data.get(0).cdata.get(i).sellPrice
-
 
                 var fruits = Fruits("$name","$imgUrl","$price")
                 fruitCatfruitList.add(fruits)
