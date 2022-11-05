@@ -10,7 +10,7 @@ import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.model.Fruits
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
 
-class FruitAdapter(private val mFruit: List<Fruits>) :
+class FruitAdapter(private val mFruit:ArrayList<Fruits> ) :
     RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
 
 

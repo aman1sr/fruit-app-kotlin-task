@@ -3,7 +3,7 @@ package com.example.fruit_app_kotlin_task.model
 import android.provider.ContactsContract.Contacts
 import com.example.fruit_app_kotlin_task.adapter.FruitsCategoryAdapter
 
-class FruitsCategory(val fruitName: String, val ImgUrl: String) {
+data class FruitsCategory(val fruitName: String, val ImgUrl: String) {
     companion object{
         private var lastFruitId = 0
 

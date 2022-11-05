@@ -37,9 +37,12 @@ class HomeViewModel : ViewModel() {
     val categorySize : LiveData<Int>
     get() = _categorySize
 
+    private var _fruitList = MutableLiveData<FruitModel>()
+    val fruitList: LiveData<FruitModel>
+    get() = _fruitList
+
     val loading = MutableLiveData<Boolean>()
 
-//     val fruitListCat = MutableLiveData<FruitModel>()
 
 
     init {
@@ -52,6 +55,11 @@ class HomeViewModel : ViewModel() {
 //        return fruitsCategories
 //    }
 
+    fun getfruitList(){
+        viewModelScope.launch {
+            _fruitList.value = FruitApi.retrofitService.getFruitList()
+        }
+    }
 
 
     private fun getFruitProperties() {
