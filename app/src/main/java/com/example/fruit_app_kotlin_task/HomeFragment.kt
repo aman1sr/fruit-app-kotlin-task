@@ -20,6 +20,8 @@ class HomeFragment : Fragment() {
 
     lateinit var fruit: ArrayList<Fruits>
 
+   var fruitListCat :Int = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,10 +32,16 @@ class HomeFragment : Fragment() {
 
         fruit = Fruits.createFruitList(10)
 
-        val adapterFruitCategory = FruitsCategoryAdapter(viewModel.getFruitCategoryList())
-        val adapterFruit = FruitAdapter(fruit)
 
-        binding.rvCategoryFruits.adapter = adapterFruitCategory
+        viewModel.categorySize.observe(viewLifecycleOwner){
+
+            val adapterFruitCategory = FruitsCategoryAdapter(FruitsCategory.createFruitList(it))
+            binding.rvCategoryFruits.adapter = adapterFruitCategory
+        }
+
+
+
+        val adapterFruit = FruitAdapter(fruit)
         binding.rvFruits.adapter = adapterFruit
 
 

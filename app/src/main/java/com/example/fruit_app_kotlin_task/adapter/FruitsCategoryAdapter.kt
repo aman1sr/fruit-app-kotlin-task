@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
 
-class FruitsCategoryAdapter(private val mFruits: List<FruitsCategory>) : RecyclerView.Adapter<FruitsCategoryAdapter.ViewHolder>() {
+class FruitsCategoryAdapter(private val mFruits: ArrayList<FruitsCategory>) : RecyclerView.Adapter<FruitsCategoryAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
