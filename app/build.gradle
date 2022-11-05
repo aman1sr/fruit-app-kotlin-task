@@ -43,6 +43,8 @@ dependencies {
     def version_glide = "4.8.0"
     def version_recyclerview = "1.1.0"
 
+
+
     implementation 'com.google.code.gson:gson:2.9.0' // Gradle
 
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"

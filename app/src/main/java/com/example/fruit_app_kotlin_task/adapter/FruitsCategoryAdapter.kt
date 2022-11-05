@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
 
@@ -25,6 +26,13 @@ class FruitsCategoryAdapter(private val mFruits: ArrayList<FruitsCategory>) : Re
         val fruit: FruitsCategory = mFruits.get(position)
 
         viewHolder.txtFruitCategory.setText(fruit.fruitName)
+
+        Glide.with(viewHolder.itemView.context)
+            .load(fruit.ImgUrl)
+            .into(viewHolder.imgFruitCategory)
+
+
+
 
     }
 
