@@ -88,6 +88,7 @@ class HomeFragment : Fragment() {
 
 
 
+
         binding.rvCategoryFruits.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
         binding.rvFruits.layoutManager = LinearLayoutManager(context)
 
@@ -96,6 +97,9 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
+
+
+
 
 
 }

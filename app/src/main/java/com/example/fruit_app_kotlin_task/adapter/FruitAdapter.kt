@@ -14,6 +14,8 @@ import com.example.fruit_app_kotlin_task.model.FruitsCategory
 class FruitAdapter(private val mFruit:ArrayList<Fruits> ) :
     RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
 
+    var onItemClick : ((Int) -> Unit)? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
@@ -40,10 +42,16 @@ class FruitAdapter(private val mFruit:ArrayList<Fruits> ) :
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+   inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val fruitName = itemView.findViewById<TextView>(R.id.fruit_txt)
         val fruitImg = itemView.findViewById<ImageView>(R.id.fruit_img)
         val fruitPrice = itemView.findViewById<TextView>(R.id.fruit_price)
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(adapterPosition)
+            }
+        }
 
     }
 
