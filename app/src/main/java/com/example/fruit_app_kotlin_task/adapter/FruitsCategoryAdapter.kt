@@ -6,47 +6,71 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fruit_app_kotlin_task.R
+import com.example.fruit_app_kotlin_task.databinding.FruitsCategoryItemBinding
+import com.example.fruit_app_kotlin_task.model.Fruits
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
+import com.example.fruit_app_kotlin_task.response.FruitModel
 
-class FruitsCategoryAdapter(private val mFruits: ArrayList<FruitsCategory>) : RecyclerView.Adapter<FruitsCategoryAdapter.ViewHolder>() {
+class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<FruitModel, FruitsCategoryAdapter.ViewHolder>(MyDiffUtil) {
+
+    companion object MyDiffUtil : DiffUtil.ItemCallback<FruitModel>() {
+        /*  used to determine structural changes between old and new list (additions/removals/position changes) */
+        override fun areItemsTheSame(oldItem: FruitModel, newItem: FruitModel): Boolean {
+            return oldItem == newItem
+        }
+
+        /* determines if particular item was updated */
+        override fun areContentsTheSame(oldItem: FruitModel, newItem: FruitModel): Boolean {
+            return oldItem.data == newItem.data
+        }
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val context = parent.context
-        val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.fruits_category_item, parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder(
+            FruitsCategoryItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val fruit: FruitsCategory = mFruits.get(position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        viewHolder.txtFruitCategory.setText(fruit.fruitName)
+        val fruit = getItem(position)       // todo: check this
 
-        Glide.with(viewHolder.itemView.context)
-            .load(fruit.ImgUrl)
-            .into(viewHolder.imgFruitCategory)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(fruit)
+        }
 
-
-
-
-    }
-
-    override fun getItemCount(): Int {
-       return mFruits.size
+        holder.bind(fruit)
     }
 
 
-
-    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        val imgFruitCategory = itemView.findViewById<ImageView>(R.id.fruit_category_img)
-        val txtFruitCategory = itemView.findViewById<TextView>(R.id.fruit_category_txt)
-
+    class OnClickListener(val clickListener: (fruit: FruitModel) -> Unit) {
+        fun onClick(fruit: FruitModel) = clickListener(fruit)
     }
 
+
+    inner class ViewHolder(private val binding: FruitsCategoryItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(fruit: FruitModel) {
+
+            binding.fruitCategoryTxt.text = fruit?.data?.get(adapterPosition)?.category
+
+            Glide.with(binding.fruitCategoryImg)
+                .load(fruit?.data?.get(adapterPosition)?.cImg)
+                .into(binding.fruitCategoryImg)
+        }
+
+    }
 
 }

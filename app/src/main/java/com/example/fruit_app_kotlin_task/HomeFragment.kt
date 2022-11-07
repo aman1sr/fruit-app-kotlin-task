@@ -24,6 +24,8 @@ class HomeFragment : Fragment() {
 
     lateinit var fruit: ArrayList<Fruits>
 
+    private lateinit var adapterFruitCategory: FruitsCategoryAdapter
+
    var fruitListCat :Int = 0
 
     override fun onCreateView(
@@ -46,14 +48,15 @@ class HomeFragment : Fragment() {
 
         viewModel.fruitList.observe(viewLifecycleOwner){
 
-            var fruitList : FruitModel = it
+            val fruitList : FruitModel = it
             var size:Int = fruitList.totalRec!!
+
+/*
 
             Log.d(TAG, "Livedata FruitModel: "+fruitList.data.get(0).cdata )
 
             var fruitCat = ArrayList<FruitsCategory>()
 
-            /* extracting Fruit list of Fruit Category List */
             for (i in 0..size-1) {
                 val name  = fruitList.data.get(i).category
                 val imgUrl  = fruitList.data.get(i).cImg
@@ -61,8 +64,16 @@ class HomeFragment : Fragment() {
                 var fruits = FruitsCategory("$name","$imgUrl")
                 fruitCat.add(fruits)
             }
+*/
 
-            val adapterFruitCategory = FruitsCategoryAdapter(fruitCat)
+
+//            val adapterFruitCategory = FruitsCategoryAdapter(fruitCat)
+            adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener{
+                Log.d(TAG, "clickedddddddddd>>> ")
+            })
+
+            // todo: send data -> ie fruitCat
+            adapterFruitCategory.submitList(fruitList)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
             /* extracting Fruit list of Cat-1 */
@@ -82,6 +93,7 @@ class HomeFragment : Fragment() {
             val adapterFruit = FruitAdapter(fruitCatfruitList)
             binding.rvFruits.adapter = adapterFruit
         }
+
 
 
 
