@@ -14,20 +14,21 @@ import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.databinding.FruitsCategoryItemBinding
 import com.example.fruit_app_kotlin_task.model.Fruits
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
+import com.example.fruit_app_kotlin_task.response.Data
 import com.example.fruit_app_kotlin_task.response.FruitModel
 
 class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<FruitModel, FruitsCategoryAdapter.ViewHolder>(MyDiffUtil) {
+    ListAdapter<Data, FruitsCategoryAdapter.ViewHolder>(MyDiffUtil) {
 
-    companion object MyDiffUtil : DiffUtil.ItemCallback<FruitModel>() {
+    companion object MyDiffUtil : DiffUtil.ItemCallback<Data>() {
         /*  used to determine structural changes between old and new list (additions/removals/position changes) */
-        override fun areItemsTheSame(oldItem: FruitModel, newItem: FruitModel): Boolean {
+        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
             return oldItem == newItem
         }
 
         /* determines if particular item was updated */
-        override fun areContentsTheSame(oldItem: FruitModel, newItem: FruitModel): Boolean {
-            return oldItem.data == newItem.data
+        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
+            return oldItem.category == newItem.category
         }
     }
 
@@ -54,20 +55,20 @@ class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
     }
 
 
-    class OnClickListener(val clickListener: (fruit: FruitModel) -> Unit) {
-        fun onClick(fruit: FruitModel) = clickListener(fruit)
+    class OnClickListener(val clickListener: (fruit: Data) -> Unit) {
+        fun onClick(fruit: Data) = clickListener(fruit)
     }
 
 
     inner class ViewHolder(private val binding: FruitsCategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(fruit: FruitModel) {
+        fun bind(fruit: Data) {
 
-            binding.fruitCategoryTxt.text = fruit?.data?.get(adapterPosition)?.category
+            binding.fruitCategoryTxt.text = fruit?.category
 
             Glide.with(binding.fruitCategoryImg)
-                .load(fruit?.data?.get(adapterPosition)?.cImg)
+                .load(fruit?.cImg)
                 .into(binding.fruitCategoryImg)
         }
 

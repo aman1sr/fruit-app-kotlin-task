@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
             })
 
             // todo: send data -> ie fruitCat
-            adapterFruitCategory.submitList(fruitList)
+            adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
             /* extracting Fruit list of Cat-1 */
