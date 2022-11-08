@@ -37,13 +37,6 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
 
-        /* Manual way of using Rec */
-        viewModel.categorySize.observe(viewLifecycleOwner) {
-
-//            val adapterFruitCategory = FruitsCategoryAdapter(FruitsCategory.createFruitList(it))
-//            binding.rvCategoryFruits.adapter = adapterFruitCategory
-
-        }
 
         viewModel.fruitList.observe(viewLifecycleOwner) {
 

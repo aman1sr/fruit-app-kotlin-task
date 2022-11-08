@@ -33,9 +33,6 @@ class HomeViewModel : ViewModel() {
 //        this.fruitsCategories = fruitCat
 //    }
 
-    private var _categorySize = MutableLiveData<Int>()
-    val categorySize : LiveData<Int>
-    get() = _categorySize
 
     private var _fruitList = MutableLiveData<FruitModel>()
     val fruitList: LiveData<FruitModel>
@@ -49,12 +46,6 @@ class HomeViewModel : ViewModel() {
         getfruitList()
     }
 
-//    fun getFruitCategoryList(): ArrayList<FruitsCategory>{
-//        fruitsCategories = FruitsCategory.createFruitList(7)       // to here <-- put in data via API
-//
-//        return fruitsCategories
-//    }
-
     fun getfruitList(){
         viewModelScope.launch {
             _fruitList.value = FruitApi.retrofitService.getFruitList()
@@ -62,22 +53,5 @@ class HomeViewModel : ViewModel() {
     }
 
 
-    private fun getFruitProperties() {
-
-        viewModelScope.launch {
-            try {
-                Log.d(TAG, "getFruitProperties: " + FruitApi.retrofitService.getFruitList().totalRec  )   // it will get a singleton Retrofit object that implements FruitApiService
-
-                _categorySize.value  = FruitApi.retrofitService.getFruitList().totalRec!!
-
-
-//                fruitListCat = FruitApi.retrofitService.getFruitList()
-
-
-            } catch (e: Exception) {
-                Log.d(TAG, "crashhhh>>> " + e.localizedMessage)
-            }
-        }
-    }
 
 }
