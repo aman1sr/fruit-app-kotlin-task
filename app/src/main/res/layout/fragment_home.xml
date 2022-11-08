@@ -48,9 +48,6 @@
             app:layout_constraintTop_toTopOf="@+id/txt_header" />
 
 
-
-
-
         <SearchView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
@@ -70,102 +67,114 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_header" />
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/search_bar"
-            >
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            >
-
-
-        <ImageView
-            android:id="@+id/img_main_banner"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
-            android:layout_marginTop="20dp"
-
-            android:layout_marginRight="@dimen/homeFrg_sideMargin"
-            android:scaleType="centerCrop"
-            android:src="@drawable/fruits_app"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
-
-        <!-- SubHeading Fruit Category section -->
-        <TextView
-            android:id="@+id/txt_subHead_categories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
-            android:layout_marginTop="@dimen/homeFrg_sideMargin"
-            android:text="Categories"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_main_banner" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_category_fruits"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            app:reverseLayout="true"
-
-            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
-            android:layout_marginTop="20dp"
-
-            tools:listitem="@layout/fruits_category_item"
-
-            android:layout_marginRight="@dimen/homeFrg_sideMargin"
-app:layout_constraintTop_toBottomOf="@+id/txt_subHead_categories"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- SubHeading Fruits section -->
-        <TextView
-            android:id="@+id/txt_subHead_fruits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
-            android:layout_marginTop="@dimen/homeFrg_sideMargin"
-            android:text="Fruits"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_category_fruits" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_fruits"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            tools:listitem="@layout/fruit_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar">
 
 
-            android:layout_marginLeft="@dimen/homeFrg_sideMargin"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="@dimen/homeFrg_sideMargin"
-            app:layout_constraintTop_toBottomOf="@+id/txt_subHead_fruits"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                >
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_category_fruits"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_main_banner" />
+
+
+                <ImageView
+                    android:id="@+id/img_main_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+                    android:layout_marginTop="20dp"
+
+                    android:layout_marginRight="@dimen/homeFrg_sideMargin"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fruits_app"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- SubHeading Fruit Category section -->
+                <TextView
+                    android:id="@+id/txt_subHead_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+                    android:layout_marginTop="@dimen/homeFrg_sideMargin"
+                    android:text="Categories"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_main_banner" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_category_fruits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="@dimen/homeFrg_sideMargin"
+
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_subHead_categories"
+                    app:reverseLayout="true"
+                    tools:listitem="@layout/fruits_category_item" />
+
+                <!-- SubHeading Fruits section -->
+                <TextView
+                    android:id="@+id/txt_subHead_fruits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+                    android:layout_marginTop="@dimen/homeFrg_sideMargin"
+                    android:text="Fruits"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_category_fruits" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_fruits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="@dimen/homeFrg_sideMargin"
+
+
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="@dimen/homeFrg_sideMargin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_subHead_fruits"
+                    tools:listitem="@layout/fruit_item" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

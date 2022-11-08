@@ -34,7 +34,14 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-
+//         todo: track the progesss, (horizontal PB , 1-100% )
+        viewModel.loading.observe(viewLifecycleOwner){
+            if (it) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
 
         viewModel.fruitList.observe(viewLifecycleOwner) {
 
@@ -42,7 +49,7 @@ class HomeFragment : Fragment() {
 
 
 
-//         todo: clickListener performed -> show RecView
+
             adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
                 Log.d(TAG, "clickedddddddddd>>> ")
 

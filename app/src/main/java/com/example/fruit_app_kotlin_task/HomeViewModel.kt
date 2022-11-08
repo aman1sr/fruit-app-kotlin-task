@@ -18,39 +18,32 @@ import retrofit2.Response
 class HomeViewModel : ViewModel() {
 
     val TAG = "HomeViewModel_d"
-
-//    lateinit var fruitsCategories: ArrayList<FruitsCategory>
-
-
-//    lateinit var fruitsCategories: MutableList<FruitsCategory>        // todo: how to ??
-
-//    lateinit var categorySize: Int        // todo: why not??
-
-//    var fruitsCategories = mutableListOf<FruitsCategory>()        // to use in future
-
-//    fun setFruitCatList(fruitCat: ArrayList<FruitsCategory>) {
-//        this.fruitsCategories = fruitCat
-//    }
+//   lateinit var categorySize: Int        // todo: why not??
 
 
+    /* to Load Progress bar */
+    val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean>
+        get() = _loading
+
+
+    /* to Extract Fruit data */
     private var _fruitList = MutableLiveData<FruitModel>()
     val fruitList: LiveData<FruitModel>
-    get() = _fruitList
-
-    val loading = MutableLiveData<Boolean>()
-
+        get() = _fruitList
 
 
     init {
         getfruitList()
+        _loading.value = true
     }
 
-    fun getfruitList(){
+    fun getfruitList() {
         viewModelScope.launch {
             _fruitList.value = FruitApi.retrofitService.getFruitList()
+            _loading.value = false
         }
     }
-
 
 
 }

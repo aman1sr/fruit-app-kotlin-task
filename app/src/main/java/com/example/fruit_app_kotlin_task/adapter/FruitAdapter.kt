@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fruit_app_kotlin_task.R
-import com.example.fruit_app_kotlin_task.model.Fruits
-import com.example.fruit_app_kotlin_task.model.FruitsCategory
+
 import com.example.fruit_app_kotlin_task.response.Cdata
 
 class FruitAdapter(private val mFruit:ArrayList<Cdata> ) :
