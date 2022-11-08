@@ -18,7 +18,7 @@ import com.example.fruit_app_kotlin_task.response.FruitModel
 
 class HomeFragment : Fragment() {
 
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
     private val TAG = "Home_d"
 
@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var adapterFruitCategory: FruitsCategoryAdapter
 
-   var fruitListCat :Int = 0
+    var fruitListCat: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,61 +37,38 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
 
-
-                    /* Manual way of using Rec */
-        viewModel.categorySize.observe(viewLifecycleOwner){
+        /* Manual way of using Rec */
+        viewModel.categorySize.observe(viewLifecycleOwner) {
 
 //            val adapterFruitCategory = FruitsCategoryAdapter(FruitsCategory.createFruitList(it))
 //            binding.rvCategoryFruits.adapter = adapterFruitCategory
 
         }
 
-        viewModel.fruitList.observe(viewLifecycleOwner){
+        viewModel.fruitList.observe(viewLifecycleOwner) {
 
-            val fruitList : FruitModel = it
-            var size:Int = fruitList.totalRec!!
-
-/*
-
-            Log.d(TAG, "Livedata FruitModel: "+fruitList.data.get(0).cdata )
-
-            var fruitCat = ArrayList<FruitsCategory>()
-
-            for (i in 0..size-1) {
-                val name  = fruitList.data.get(i).category
-                val imgUrl  = fruitList.data.get(i).cImg
-
-                var fruits = FruitsCategory("$name","$imgUrl")
-                fruitCat.add(fruits)
-            }
-*/
+            val fruitList: FruitModel = it
 
 
-//            val adapterFruitCategory = FruitsCategoryAdapter(fruitCat)
-            adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener{
+
+//         todo: clickListener performed -> show RecView
+            adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
                 Log.d(TAG, "clickedddddddddd>>> ")
+
+
+                var fruitList = it
+
+                val adapterFruit = FruitAdapter(fruitList)
+                binding.rvFruits.adapter = adapterFruit
+
             })
 
-            // todo: send data -> ie fruitCat
+
             adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
-            /* extracting Fruit list of Cat-1 */
 
-            val fruitSize = fruitList.data.get(0).cdata.size
-            var fruitCatfruitList : ArrayList<Fruits> = arrayListOf()
 
-            for (i in 0..fruitSize-1) {
-                val name  = fruitList.data.get(0).cdata.get(i).name
-                val imgUrl  = fruitList.data.get(0).cdata.get(i).image
-                val price  = fruitList.data.get(0).cdata.get(i).sellPrice
-
-                var fruits = Fruits("$name","$imgUrl","$price")
-                fruitCatfruitList.add(fruits)
-            }
-
-            val adapterFruit = FruitAdapter(fruitCatfruitList)
-            binding.rvFruits.adapter = adapterFruit
         }
 
 
@@ -101,17 +78,14 @@ class HomeFragment : Fragment() {
 
 
 
-        binding.rvCategoryFruits.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
+        binding.rvCategoryFruits.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvFruits.layoutManager = LinearLayoutManager(context)
-
 
 
         // Inflate the layout for this fragment
         return binding.root
     }
-
-
-
 
 
 }

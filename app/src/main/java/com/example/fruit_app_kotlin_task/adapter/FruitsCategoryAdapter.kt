@@ -14,6 +14,7 @@ import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.databinding.FruitsCategoryItemBinding
 import com.example.fruit_app_kotlin_task.model.Fruits
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
+import com.example.fruit_app_kotlin_task.response.Cdata
 import com.example.fruit_app_kotlin_task.response.Data
 import com.example.fruit_app_kotlin_task.response.FruitModel
 
@@ -48,15 +49,15 @@ class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
         val fruit = getItem(position)       // todo: check this
 
         holder.itemView.setOnClickListener {
-            onClickListener.onClick(fruit)
+            onClickListener.onClick(fruit.cdata)            // sending data to click listener
         }
 
         holder.bind(fruit)
     }
 
 
-    class OnClickListener(val clickListener: (fruit: Data) -> Unit) {
-        fun onClick(fruit: Data) = clickListener(fruit)
+    class OnClickListener(val clickListener: (fruit: ArrayList<Cdata>) -> Unit) {
+        fun onClick(fruit: ArrayList<Cdata>) = clickListener(fruit)
     }
 
 

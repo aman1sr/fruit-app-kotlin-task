@@ -10,8 +10,9 @@ import com.bumptech.glide.Glide
 import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.model.Fruits
 import com.example.fruit_app_kotlin_task.model.FruitsCategory
+import com.example.fruit_app_kotlin_task.response.Cdata
 
-class FruitAdapter(private val mFruit:ArrayList<Fruits> ) :
+class FruitAdapter(private val mFruit:ArrayList<Cdata> ) :
     RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
 
     var onItemClick : ((Int) -> Unit)? = null
@@ -26,13 +27,13 @@ class FruitAdapter(private val mFruit:ArrayList<Fruits> ) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val fruit: Fruits = mFruit.get(position)
+        val fruit = mFruit.get(position)
 
-        holder.fruitName.setText(fruit.fruitName)
-        holder.fruitPrice.setText(fruit.fruitPrice.toString())
+        holder.fruitName.setText(fruit.name)
+        holder.fruitPrice.setText(fruit.sellPrice)
 
         Glide.with(holder.itemView.context)
-            .load(mFruit.get(position).ImgURL)
+            .load(mFruit.get(position).image)
             .into(holder.fruitImg)
 
     }
