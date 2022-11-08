@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fruit_app_kotlin_task.adapter.FruitAdapter
 import com.example.fruit_app_kotlin_task.adapter.FruitsCategoryAdapter
 import com.example.fruit_app_kotlin_task.databinding.FragmentHomeBinding
-import com.example.fruit_app_kotlin_task.model.Fruits
-import com.example.fruit_app_kotlin_task.model.FruitsCategory
+
 import com.example.fruit_app_kotlin_task.response.Cdata
 import com.example.fruit_app_kotlin_task.response.FruitModel
 
@@ -22,7 +21,6 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private val TAG = "Home_d"
 
-    lateinit var fruit: ArrayList<Fruits>
 
     private lateinit var adapterFruitCategory: FruitsCategoryAdapter
 

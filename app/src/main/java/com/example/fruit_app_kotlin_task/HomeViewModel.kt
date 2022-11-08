@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fruit_app_kotlin_task.model.Fruits
-import com.example.fruit_app_kotlin_task.model.FruitsCategory
+
 import com.example.fruit_app_kotlin_task.network.FruitApi
 import com.example.fruit_app_kotlin_task.response.Data
 import com.example.fruit_app_kotlin_task.response.FruitModel
