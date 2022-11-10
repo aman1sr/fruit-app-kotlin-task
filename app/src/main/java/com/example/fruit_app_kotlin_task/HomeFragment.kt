@@ -52,20 +52,21 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
-/* OnClick Listener */
-            adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
-                Log.d(TAG, "clickedddddddddd>>> ")
-
-                /* todo:  make this stuff below LIVE DATA , to remain rotation safe */
-                var fruitList = it
-
-                adapterFruit = FruitAdapter(fruitList)
-                binding.rvFruits.adapter = adapterFruit
-
-            })
 
         }
 
+
+/* OnClick Listener */
+        adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
+            Log.d(TAG, "clickedddddddddd>>> ")
+
+            /* todo:  make this stuff below LIVE DATA , to remain rotation safe */
+            var fruitList = it      // if could extract it out of ViewModel,  => if
+
+            adapterFruit = FruitAdapter(fruitList)
+            binding.rvFruits.adapter = adapterFruit
+
+        })
 
 
 
