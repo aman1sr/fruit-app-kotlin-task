@@ -3,6 +3,8 @@ package com.example.fruit_app_kotlin_task.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +13,10 @@ import com.example.fruit_app_kotlin_task.R
 
 import com.example.fruit_app_kotlin_task.response.Cdata
 
-class FruitAdapter(private val mFruit:ArrayList<Cdata> ) :
-    RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
+class FruitAdapter(private var mFruit: ArrayList<Cdata>) :
+    RecyclerView.Adapter<FruitAdapter.ViewHolder>(), Filterable {
 
-    var onItemClick : ((Int) -> Unit)? = null
+    var onItemClick: ((Int) -> Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,8 +43,39 @@ class FruitAdapter(private val mFruit:ArrayList<Cdata> ) :
         return mFruit.size
     }
 
+    /* the SearchBar fiter */
+    override fun getFilter(): Filter {
+        return object: Filter(){
 
-   inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charString = constraint?.toString() ?: ""
+                if (!charString.isEmpty()) {
+
+
+                val filteredList = ArrayList<Cdata>()
+                mFruit.filter {
+                    (it.name?.contains(constraint!!) == true)
+                }
+                    .forEach { filteredList.add(it) }
+
+                    mFruit = filteredList
+            }
+                return FilterResults().apply{values = mFruit}
+
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                mFruit = if (results?.values == null)
+                    ArrayList()
+                else
+                    results.values as ArrayList<Cdata>
+                notifyDataSetChanged()
+
+            }
+        }
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val fruitName = itemView.findViewById<TextView>(R.id.fruit_txt)
         val fruitImg = itemView.findViewById<ImageView>(R.id.fruit_img)
         val fruitPrice = itemView.findViewById<TextView>(R.id.fruit_price)
@@ -54,5 +87,7 @@ class FruitAdapter(private val mFruit:ArrayList<Cdata> ) :
         }
 
     }
+
+
 
 }

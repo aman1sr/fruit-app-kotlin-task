@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fruit_app_kotlin_task.adapter.FruitAdapter
@@ -15,7 +16,7 @@ import com.example.fruit_app_kotlin_task.databinding.FragmentHomeBinding
 import com.example.fruit_app_kotlin_task.response.Cdata
 import com.example.fruit_app_kotlin_task.response.FruitModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
 
 
     private lateinit var adapterFruitCategory: FruitsCategoryAdapter
+    private lateinit var adapterFruit: FruitAdapter
 
     var fruitListCat: Int = 0
 
@@ -35,7 +37,7 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
 //         todo: track the progesss, (horizontal PB , 1-100% )
-        viewModel.loading.observe(viewLifecycleOwner){
+        viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
                 binding.progressBar.visibility = View.VISIBLE
             } else {
@@ -43,20 +45,18 @@ class HomeFragment : Fragment() {
             }
         }
 
+
         viewModel.fruitList.observe(viewLifecycleOwner) {
 
             val fruitList: FruitModel = it
 
-
-
-
             adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
                 Log.d(TAG, "clickedddddddddd>>> ")
 
-
+                /* todo:  make this stuff below LIVE DATA , to remain rotation safe */
                 var fruitList = it
 
-                val adapterFruit = FruitAdapter(fruitList)
+                adapterFruit = FruitAdapter(fruitList)
                 binding.rvFruits.adapter = adapterFruit
 
             })
@@ -66,14 +66,12 @@ class HomeFragment : Fragment() {
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
 
-
         }
 
 
 
 
-
-
+        binding.searchBar.setOnQueryTextListener(this)
 
 
         binding.rvCategoryFruits.layoutManager =
@@ -81,8 +79,17 @@ class HomeFragment : Fragment() {
         binding.rvFruits.layoutManager = LinearLayoutManager(context)
 
 
-        // Inflate the layout for this fragment
         return binding.root
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        adapterFruit.filter.filter(query)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        adapterFruit.filter.filter(newText)
+        return false
     }
 
 

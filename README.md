@@ -5,11 +5,19 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 
 ## What's New
 
- - MVVM structure  
- - Navigation Graph implementation 
+ - Added Progress Bar 
+ - Updated RecyclerView Layout in NestedScrollView
  
+## Todo
+- add horizontal PB (in HomeFragment) , to track progress  1-100%
+- add Swipe Refresh on RecView (in HomeFragment)
+- 
+
 
 ## NOTES Src:
+
+- RecView ClickListener on item
+  - [Joel bro-Section.io](https://www.section.io/engineering-education/handling-recyclerview-clicks-the-right-way/)
 
 - Navigation: 
     - [Medium](https://medium.com/@muhamed.riyas/navigation-component-the-complete-guide-c51c9911684)

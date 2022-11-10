@@ -55,6 +55,8 @@ class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
     }
 
 
+
+
     class OnClickListener(val clickListener: (fruit: ArrayList<Cdata>) -> Unit) {
         fun onClick(fruit: ArrayList<Cdata>) = clickListener(fruit)
     }
