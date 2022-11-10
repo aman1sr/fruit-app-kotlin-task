@@ -11,6 +11,7 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 ## Todo
 - add horizontal PB (in HomeFragment) , to track progress  1-100%
 - add Swipe Refresh on RecView (in HomeFragment)
+- survive device Rotation Changes
 - 
 
 

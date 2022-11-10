@@ -29,8 +29,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     var fruitListCat: Int = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -45,11 +44,15 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }
 
-
+        /* Fetching the Initial Fruit Category data */
         viewModel.fruitList.observe(viewLifecycleOwner) {
 
             val fruitList: FruitModel = it
 
+            adapterFruitCategory.submitList(fruitList?.data)
+            binding.rvCategoryFruits.adapter = adapterFruitCategory
+
+/* OnClick Listener */
             adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
                 Log.d(TAG, "clickedddddddddd>>> ")
 
@@ -60,11 +63,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                 binding.rvFruits.adapter = adapterFruit
 
             })
-
-
-            adapterFruitCategory.submitList(fruitList?.data)
-            binding.rvCategoryFruits.adapter = adapterFruitCategory
-
 
         }
 
