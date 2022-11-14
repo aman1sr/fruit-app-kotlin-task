@@ -5,8 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fruit_app_kotlin_task.adapter.FruitsCategoryAdapter
 
 import com.example.fruit_app_kotlin_task.network.FruitApi
+import com.example.fruit_app_kotlin_task.response.Cdata
 import com.example.fruit_app_kotlin_task.response.Data
 import com.example.fruit_app_kotlin_task.response.FruitModel
 import com.velmurugan.mvvmwithkotlincoroutinesandretrofit.NetworkState
@@ -20,6 +22,8 @@ class HomeViewModel : ViewModel() {
     val TAG = "HomeViewModel_d"
 //   lateinit var categorySize: Int        // todo: why not??
 
+    private lateinit var adapterFruitCategory: FruitsCategoryAdapter
+
 
     /* to Load Progress bar */
     val _loading = MutableLiveData<Boolean>()
@@ -31,6 +35,11 @@ class HomeViewModel : ViewModel() {
     private var _fruitList = MutableLiveData<FruitModel>()
     val fruitList: LiveData<FruitModel>
         get() = _fruitList
+
+    /* to Observe the Fruit list based on Fruit Cat Click */
+    private var _subFruitList = MutableLiveData<ArrayList<Cdata>>()
+    val subFruitList: LiveData<ArrayList<Cdata>>
+    get() = _subFruitList
 
 
     init {
@@ -45,5 +54,8 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+    fun getSubFruitList( fruitList: ArrayList<Cdata>) {
+        _subFruitList.value = fruitList!!
+    }
 
 }

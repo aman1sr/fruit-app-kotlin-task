@@ -62,11 +62,15 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
             /* todo:  make this stuff below LIVE DATA , to remain rotation safe */
             var fruitList = it      // if could extract it out of ViewModel,  => if
-
-            adapterFruit = FruitAdapter(fruitList)
-            binding.rvFruits.adapter = adapterFruit
+            viewModel.getSubFruitList(fruitList)
 
         })
+
+
+        viewModel.subFruitList.observe(viewLifecycleOwner){ fruitList ->
+            adapterFruit = FruitAdapter(fruitList)
+            binding.rvFruits.adapter = adapterFruit
+        }
 
 
 

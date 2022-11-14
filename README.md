@@ -12,10 +12,12 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 - add horizontal PB (in HomeFragment) , to track progress  1-100%
 - add Swipe Refresh on RecView (in HomeFragment)
 - survive device Rotation Changes
+- integrate  [Open AI APIs](https://beta.openai.com/overview)
 - 
 
 
 ## NOTES Src:
+
 
 - RecView ClickListener on item
   - [Joel bro-Section.io](https://www.section.io/engineering-education/handling-recyclerview-clicks-the-right-way/)
