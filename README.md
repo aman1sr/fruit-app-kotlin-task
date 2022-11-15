@@ -4,9 +4,7 @@
 basic kotlin challenge , the  app uses API to show fruits category based recommendation 
 
 ## What's New
-
- - Added Progress Bar 
- - Updated RecyclerView Layout in NestedScrollView
+- Extracting the data from LiveData for RecyclerView ( surviving the Rotation now)
  
 ## Todo
 - add horizontal PB (in HomeFragment) , to track progress  1-100%

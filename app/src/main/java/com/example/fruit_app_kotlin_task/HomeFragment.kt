@@ -52,11 +52,10 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
-
         }
 
 
-/* OnClick Listener */
+                    /* OnClick Listener */
         adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
             Log.d(TAG, "clickedddddddddd>>> ")
 
@@ -86,12 +85,12 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        adapterFruit.filter.filter(query)
+//        adapterFruit.filter.filter(query)
         return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        adapterFruit.filter.filter(newText)
+//        adapterFruit.filter.filter(newText)
         return false
     }
 
