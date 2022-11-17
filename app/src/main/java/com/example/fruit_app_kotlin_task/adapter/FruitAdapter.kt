@@ -16,7 +16,6 @@ import com.example.fruit_app_kotlin_task.response.Cdata
 class FruitAdapter(private var mFruit: ArrayList<Cdata>) :
     RecyclerView.Adapter<FruitAdapter.ViewHolder>(), Filterable {
 
-    var onItemClick: ((Int) -> Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -80,14 +79,10 @@ class FruitAdapter(private var mFruit: ArrayList<Cdata>) :
         val fruitImg = itemView.findViewById<ImageView>(R.id.fruit_img)
         val fruitPrice = itemView.findViewById<TextView>(R.id.fruit_price)
 
-        init {
-            itemView.setOnClickListener {
-                onItemClick?.invoke(adapterPosition)
-            }
+
         }
 
     }
 
 
 
-}

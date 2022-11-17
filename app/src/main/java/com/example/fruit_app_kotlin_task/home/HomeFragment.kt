@@ -53,11 +53,17 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         }
 
+        /* Updating Fruit List wrt Click */
+        viewModel.subFruitList.observe(viewLifecycleOwner){ fruitList ->
+//            adapterFruit = FruitAdapter(fruitList)
+            adapterFruit = FruitAdapter(fruitList)
+            binding.rvFruits.adapter = adapterFruit
+        }
+
 
                     /* OnClick Listener */
         adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
             Log.d(TAG, "clickedddddddddd>>> ")
-
             /* todo:  make this stuff below LIVE DATA , to remain rotation safe */
             var fruitList = it      // if could extract it out of ViewModel,  => if
             viewModel.getSubFruitList(fruitList)
@@ -65,10 +71,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         })
 
 
-        viewModel.subFruitList.observe(viewLifecycleOwner){ fruitList ->
-            adapterFruit = FruitAdapter(fruitList)
-            binding.rvFruits.adapter = adapterFruit
-        }
+
 
 
         binding.searchBar.setOnQueryTextListener(this)

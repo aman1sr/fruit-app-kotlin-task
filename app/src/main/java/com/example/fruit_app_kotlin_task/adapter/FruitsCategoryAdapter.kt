@@ -50,13 +50,12 @@ class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
         holder.itemView.setOnClickListener {
             onClickListener.onClick(fruit.cdata)            // sending data to click listener
         }
-
         holder.bind(fruit)
     }
 
 
 
-
+// todo: how's working the flow
     class OnClickListener(val clickListener: (fruit: ArrayList<Cdata>) -> Unit) {
         fun onClick(fruit: ArrayList<Cdata>) = clickListener(fruit)
     }

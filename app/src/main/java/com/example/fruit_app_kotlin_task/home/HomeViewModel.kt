@@ -42,6 +42,12 @@ class HomeViewModel : ViewModel() {
     get() = _subFruitList
 
 
+    /* to hold the info of Detail Fruit */
+    private var _detailFruit = MutableLiveData<Cdata>()
+    val detailFruit: LiveData<Cdata>
+    get() = _detailFruit
+
+
     init {
         getfruitList()
         _loading.value = true
