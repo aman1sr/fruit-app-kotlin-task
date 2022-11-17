@@ -1,4 +1,4 @@
-package com.example.fruit_app_kotlin_task
+package com.example.fruit_app_kotlin_task.home
 
 import android.util.Log
 import androidx.lifecycle.LiveData

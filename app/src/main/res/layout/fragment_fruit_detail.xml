@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail.FruitDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/img_fruit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideLine_horizontal_img"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txt_fruitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FruitName"
+            android:layout_marginTop="@dimen/marign_top_detailedScreen"
+            app:layout_constraintStart_toStartOf="@+id/guideline_verticle"
+            app:layout_constraintTop_toBottomOf="@+id/img_fruit"
+
+            />
+        <TextView
+            android:id="@+id/txt_fruitDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desc........"
+            android:layout_marginTop="@dimen/marign_top_detailedScreen"
+            app:layout_constraintStart_toStartOf="@+id/guideline_verticle"
+            app:layout_constraintTop_toBottomOf="@+id/txt_fruitName"
+
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_verticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_horizontal_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

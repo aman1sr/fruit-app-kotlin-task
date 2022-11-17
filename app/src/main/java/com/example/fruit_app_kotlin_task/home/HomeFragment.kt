@@ -1,4 +1,4 @@
-package com.example.fruit_app_kotlin_task
+package com.example.fruit_app_kotlin_task.home
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,6 @@ import com.example.fruit_app_kotlin_task.adapter.FruitAdapter
 import com.example.fruit_app_kotlin_task.adapter.FruitsCategoryAdapter
 import com.example.fruit_app_kotlin_task.databinding.FragmentHomeBinding
 
-import com.example.fruit_app_kotlin_task.response.Cdata
 import com.example.fruit_app_kotlin_task.response.FruitModel
 
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -72,18 +71,15 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         }
 
 
-
         binding.searchBar.setOnQueryTextListener(this)
-
-
-        binding.rvCategoryFruits.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        
+        binding.rvCategoryFruits.layoutManager =LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvFruits.layoutManager = LinearLayoutManager(context)
 
 
         return binding.root
     }
-
+// todo: check this codeLab Article (concept of DiffUtils) -> https://developer.android.com/codelabs/kotlin-android-training-diffutil-databinding?index=..%2F..android-kotlin-fundamentals#0
     override fun onQueryTextSubmit(query: String?): Boolean {
 //        adapterFruit.filter.filter(query)
         return false

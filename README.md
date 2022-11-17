@@ -12,6 +12,8 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 - survive device Rotation Changes
 - integrate  [Open AI APIs](https://beta.openai.com/overview)
 - 
+- make the detail Fruit UI  having custom LandScape mode
+- set the base theme &  custom TextView style 
 
 
 ## NOTES Src:
