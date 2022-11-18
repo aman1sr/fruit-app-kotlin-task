@@ -1,7 +1,10 @@
 package com.example.fruit_app_kotlin_task.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Cdata(
     @SerializedName("pid"           ) var pid           : String? = null,
     @SerializedName("cid"           ) var cid           : String? = null,
@@ -19,4 +22,4 @@ data class Cdata(
     @SerializedName("created_by"    ) var createdBy     : String? = null,
     @SerializedName("farmerName"    ) var farmerName    : String? = null,
     @SerializedName("farmerCompany" ) var farmerCompany : String? = null
-)
+) : Parcelable

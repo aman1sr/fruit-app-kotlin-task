@@ -34,7 +34,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-//         todo: track the progesss, (horizontal PB , 1-100% )
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
                 binding.progressBar.visibility = View.VISIBLE
@@ -47,24 +46,36 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         viewModel.fruitList.observe(viewLifecycleOwner) {
 
             val fruitList: FruitModel = it
-
             adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
         }
 
-        /* Updating Fruit List wrt Click */
+
+        /* Updating Fruit List wrt Click on Fruit Cat */
         viewModel.subFruitList.observe(viewLifecycleOwner){ fruitList ->
 //            adapterFruit = FruitAdapter(fruitList)
-            adapterFruit = FruitAdapter(fruitList)
+            adapterFruit.submitList(fruitList)
             binding.rvFruits.adapter = adapterFruit
         }
 
 
-                    /* OnClick Listener */
+        viewModel.detailFruit.observe(viewLifecycleOwner){
+        // todo: Navigate    to detailed Frg
+
+        }
+
+
+        /* OnClick Listener on Specific Fruit  */
+        adapterFruit = FruitAdapter(FruitAdapter.OnClickListener{
+            Log.d(TAG, "Fruit clickedddddddddd>>> ")
+            viewModel.getDetailFruit(it)
+        })
+
+
+                    /* OnClick Listener on Fruit Category */
         adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
             Log.d(TAG, "clickedddddddddd>>> ")
-            /* todo:  make this stuff below LIVE DATA , to remain rotation safe */
             var fruitList = it      // if could extract it out of ViewModel,  => if
             viewModel.getSubFruitList(fruitList)
 

@@ -61,7 +61,11 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getSubFruitList( fruitList: ArrayList<Cdata>) {
-        _subFruitList.value = fruitList!!
+        _subFruitList.value = fruitList
+    }
+
+    fun getDetailFruit(fruit: Cdata) {
+        _detailFruit.value = fruit
     }
 
 }

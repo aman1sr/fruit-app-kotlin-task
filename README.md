@@ -7,7 +7,7 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 - Extracting the data from LiveData for RecyclerView ( surviving the Rotation now)
  
 ## Todo
-- add horizontal PB (in HomeFragment) , to track progress  1-100%
+- add horizontal PB (in HomeFragment - viewModel.loading) , to track progress  1-100%
 - add Swipe Refresh on RecView (in HomeFragment)
 - survive device Rotation Changes
 - integrate  [Open AI APIs](https://beta.openai.com/overview)
