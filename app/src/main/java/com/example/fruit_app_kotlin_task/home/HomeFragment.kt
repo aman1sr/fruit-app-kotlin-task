@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.lifecycle.Observer
+
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.adapter.FruitAdapter
 import com.example.fruit_app_kotlin_task.adapter.FruitsCategoryAdapter
 import com.example.fruit_app_kotlin_task.databinding.FragmentHomeBinding
@@ -53,27 +58,37 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
 
         /* Updating Fruit List wrt Click on Fruit Cat */
-        viewModel.subFruitList.observe(viewLifecycleOwner){ fruitList ->
+        viewModel.subFruitList.observe(viewLifecycleOwner) { fruitList ->
 //            adapterFruit = FruitAdapter(fruitList)
             adapterFruit.submitList(fruitList)
             binding.rvFruits.adapter = adapterFruit
         }
 
 
-        viewModel.detailFruit.observe(viewLifecycleOwner){
-        // todo: Navigate    to detailed Frg
+//        viewModel.detailFruit.observe(viewLifecycleOwner) {
+//            // todo: Navigate    to detailed Frg
+//            if (null != it) {
+//
+//                this.findNavController().navigate()
+//                viewModel.displayFruitDetailComplete()
+//            }
+//
+//        }
 
-        }
+        viewModel.detailFruit.observe(viewLifecycleOwner, Observer {
 
+            this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFruitDetailFragment(it!!))
+
+        })
 
         /* OnClick Listener on Specific Fruit  */
-        adapterFruit = FruitAdapter(FruitAdapter.OnClickListener{
+        adapterFruit = FruitAdapter(FruitAdapter.OnClickListener {
             Log.d(TAG, "Fruit clickedddddddddd>>> ")
             viewModel.getDetailFruit(it)
         })
 
 
-                    /* OnClick Listener on Fruit Category */
+        /* OnClick Listener on Fruit Category */
         adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
             Log.d(TAG, "clickedddddddddd>>> ")
             var fruitList = it      // if could extract it out of ViewModel,  => if
@@ -86,14 +101,16 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
 
         binding.searchBar.setOnQueryTextListener(this)
-        
-        binding.rvCategoryFruits.layoutManager =LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        binding.rvCategoryFruits.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvFruits.layoutManager = LinearLayoutManager(context)
 
 
         return binding.root
     }
-// todo: check this codeLab Article (concept of DiffUtils) -> https://developer.android.com/codelabs/kotlin-android-training-diffutil-databinding?index=..%2F..android-kotlin-fundamentals#0
+
+    // todo: check this codeLab Article (concept of DiffUtils) -> https://developer.android.com/codelabs/kotlin-android-training-diffutil-databinding?index=..%2F..android-kotlin-fundamentals#0
     override fun onQueryTextSubmit(query: String?): Boolean {
 //        adapterFruit.filter.filter(query)
         return false

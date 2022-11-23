@@ -20,11 +20,11 @@
         android:name="com.example.fruit_app_kotlin_task.detail.FruitDetailFragment"
         android:label="fragment_fruit_detail"
         tools:layout="@layout/fragment_fruit_detail">
+
         <argument
             android:name="selectedProperty"
             app:argType="com.example.fruit_app_kotlin_task.response.Cdata"
         />
-
     </fragment>
 
 </navigation>

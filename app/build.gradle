@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
@@ -43,6 +45,12 @@ dependencies {
     def version_retrofit = "2.9.0"
     def version_glide = "4.8.0"
     def version_recyclerview = "1.1.0"
+    def version_navigation = "2.5.3"
+
+    // Navigation
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$version_navigation")
+    implementation("androidx.navigation:navigation-ui-ktx:$version_navigation")
 
 
 
@@ -68,9 +76,9 @@ dependencies {
 
 
 
-    // Kotlin
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+//    // Kotlin
+//    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+//    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
 
     //ViewModel

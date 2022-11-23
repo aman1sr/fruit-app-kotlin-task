@@ -43,8 +43,8 @@ class HomeViewModel : ViewModel() {
 
 
     /* to hold the info of Detail Fruit */
-    private var _detailFruit = MutableLiveData<Cdata>()
-    val detailFruit: LiveData<Cdata>
+    private var _detailFruit = MutableLiveData<Cdata?>()
+    val detailFruit: LiveData<Cdata?>
     get() = _detailFruit
 
 
@@ -66,6 +66,10 @@ class HomeViewModel : ViewModel() {
 
     fun getDetailFruit(fruit: Cdata) {
         _detailFruit.value = fruit
+    }
+
+    fun displayFruitDetailComplete() {
+        _detailFruit.value = null
     }
 
 }
