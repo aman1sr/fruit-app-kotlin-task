@@ -1,22 +1,41 @@
 package com.example.fruit_app_kotlin_task.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.fruit_app_kotlin_task.R
+import com.example.fruit_app_kotlin_task.databinding.FragmentFruitDetailBinding
 
 
 class FruitDetailFragment : Fragment() {
+
+private lateinit var binding : FragmentFruitDetailBinding
+private lateinit var viewModel : FruitDetailViewModel
+private val TAG  ="FruitDetail_d"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fruit_detail, container, false)
 
+        binding = FragmentFruitDetailBinding.inflate(layoutInflater)
+        val application = requireNotNull(activity).application  // todo: what's every line meaning??
+        val getFruitDetail = FruitDetailFragmentArgs.fromBundle(requireArguments()).selectedProperty
+        val viewModelFactory = FruitDetailViewModelFactory(getFruitDetail, application)
+
+        viewModel = ViewModelProvider(this, viewModelFactory).get(FruitDetailViewModel::class.java)
+
+        viewModel.fruitDetails.observe(viewLifecycleOwner){
+            Log.d(TAG, "fetched data: "+it)
+        }
+
+        // Inflate the layout for this fragment
+        return binding.root
     }
 
 }

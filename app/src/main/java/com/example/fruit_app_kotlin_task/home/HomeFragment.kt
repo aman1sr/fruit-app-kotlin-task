@@ -65,19 +65,10 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         }
 
 
-//        viewModel.detailFruit.observe(viewLifecycleOwner) {
-//            // todo: Navigate    to detailed Frg
-//            if (null != it) {
-//
-//                this.findNavController().navigate()
-//                viewModel.displayFruitDetailComplete()
-//            }
-//
-//        }
-
         viewModel.detailFruit.observe(viewLifecycleOwner, Observer {
 
             this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFruitDetailFragment(it!!))
+            // article ?. vs !!  (https://blog.mindorks.com/safecalls-vs-nullchecks-in-kotlin)
 
         })
 
