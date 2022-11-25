@@ -22,27 +22,172 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/guideLine_horizontal_img"
             tools:src="@tools:sample/avatars" />
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
 
+    app:layout_constraintStart_toStartOf="@+id/guideline_verticle"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/img_fruit"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marign_top_detailedScreen"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FruitName: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            />
         <TextView
             android:id="@+id/txt_fruitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FruitName"
-            android:layout_marginTop="@dimen/marign_top_detailedScreen"
-            app:layout_constraintStart_toStartOf="@+id/guideline_verticle"
-            app:layout_constraintTop_toBottomOf="@+id/img_fruit"
+            android:text=""
 
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marign_top_detailedScreen"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fruit Description: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
             />
         <TextView
             android:id="@+id/txt_fruitDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Desc........"
-            android:layout_marginTop="@dimen/marign_top_detailedScreen"
-            app:layout_constraintStart_toStartOf="@+id/guideline_verticle"
-            app:layout_constraintTop_toBottomOf="@+id/txt_fruitName"
+            android:text=""
 
             />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marign_top_detailedScreen"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fruit Price: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_fruitPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+
+            />
+
+    </LinearLayout>
+
+ <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marign_top_detailedScreen"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Quantity: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_totalQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+
+            />
+
+    </LinearLayout>
+
+ <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marign_top_detailedScreen"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farmer Name: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_farmerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+
+            />
+
+    </LinearLayout>
+
+ <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marign_top_detailedScreen"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farmer Company: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_farmerCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_verticle"

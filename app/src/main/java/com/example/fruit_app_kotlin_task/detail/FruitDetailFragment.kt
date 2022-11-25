@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.databinding.FragmentFruitDetailBinding
-
 
 class FruitDetailFragment : Fragment() {
 
@@ -32,7 +32,21 @@ private val TAG  ="FruitDetail_d"
 
         viewModel.fruitDetails.observe(viewLifecycleOwner){
             Log.d(TAG, "fetched data: "+it)
+
+            Glide.with(binding.imgFruit)
+                .load(it.image)
+                .into(binding.imgFruit)
+
+            binding.txtFruitName.setText(it.name)
+            binding.txtFruitDesc.setText(it.description)
+            binding.txtFruitPrice.setText(it.sellPrice)
+            binding.txtTotalQty.setText(it.totalQty)
+            binding.txtFarmerName.setText(it.farmerName)
+            binding.txtFarmerCompany.setText(it.farmerCompany)
+
         }
+
+
 
         // Inflate the layout for this fragment
         return binding.root

@@ -49,7 +49,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         /* Fetching the Initial Fruit Category data */
         viewModel.fruitList.observe(viewLifecycleOwner) {
-
             val fruitList: FruitModel = it
             adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
@@ -64,12 +63,11 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             binding.rvFruits.adapter = adapterFruit
         }
 
-
+/* reading LIVE DATA , if fruit Detailed is clicked & detailFruit got it's data , --> navigate */
         viewModel.detailFruit.observe(viewLifecycleOwner, Observer {
 
             this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFruitDetailFragment(it!!))
             // article ?. vs !!  (https://blog.mindorks.com/safecalls-vs-nullchecks-in-kotlin)
-
         })
 
         /* OnClick Listener on Specific Fruit  */
