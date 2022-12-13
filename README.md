@@ -14,6 +14,7 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 - 
 - make the detail Fruit UI  having custom LandScape mode
 - set the base theme &  custom TextView style 
+- use Animation lib: https://github.com/gelitenight/WaveView, https://github.com/r0adkll/Slidr
 
 
 ## NOTES Src:

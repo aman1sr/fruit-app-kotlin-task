@@ -25,11 +25,11 @@ private val TAG  ="FruitDetail_d"
 
         binding = FragmentFruitDetailBinding.inflate(layoutInflater)
         val application = requireNotNull(activity).application  // todo: what's every line meaning??
-        val getFruitDetail = FruitDetailFragmentArgs.fromBundle(requireArguments()).selectedProperty
+        val getFruitDetail = FruitDetailFragmentArgs.fromBundle(requireArguments()).selectedProperty        // getting the data from Navigation Arg
         val viewModelFactory = FruitDetailViewModelFactory(getFruitDetail, application)
-
         viewModel = ViewModelProvider(this, viewModelFactory).get(FruitDetailViewModel::class.java)
 
+        /* Observing the data received from Prev screen */
         viewModel.fruitDetails.observe(viewLifecycleOwner){
             Log.d(TAG, "fetched data: "+it)
 
@@ -39,11 +39,31 @@ private val TAG  ="FruitDetail_d"
 
             binding.txtFruitName.setText(it.name)
             binding.txtFruitDesc.setText(it.description)
-            binding.txtFruitPrice.setText(it.sellPrice)
-            binding.txtTotalQty.setText(it.totalQty)
+            binding.txtTotalQty.setText(it.totalQty +"Qty")
             binding.txtFarmerName.setText(it.farmerName)
             binding.txtFarmerCompany.setText(it.farmerCompany)
 
+
+            /* bottom UI */
+            binding.txtFruitPrice.setText("Price: "+it.sellPrice+" Rs")
+            var price = it.sellPrice?.toDouble()
+            viewModel.sellPrice = price!!
+
+        }
+
+        viewModel.fruitCartQty.observe(viewLifecycleOwner){
+            var price = viewModel.sellPrice
+            var grandTotal = it*price
+            binding.txtGrandTotalPrice.setText(grandTotal.toString() + "Rs")
+            binding.txtSubtotal.setText(grandTotal.toString() + "Rs")
+            binding.etQtyUpdate.setText(it.toInt().toString())
+        }
+
+        binding.btnImgPlusQty.setOnClickListener {
+            viewModel.addQty()
+        }
+        binding.btnImgMinusQty.setOnClickListener {
+            viewModel.minusQty()
         }
 
 

@@ -12,8 +12,29 @@ class FruitDetailViewModel(fruitData: Cdata, app: Application) : AndroidViewMode
     val fruitDetails : LiveData<Cdata>
     get() = _fruitDetails
 
+    private val _fruitCartQty = MutableLiveData<Int>()
+    val fruitCartQty : LiveData<Int>
+    get() = _fruitCartQty
+
+     var sellPrice: Double = 1.0       // to check best way to intialize
+
+     var tax: Double =18.0
+     var deliveryRate: Double = 50.0
+
     init {
         _fruitDetails.value = fruitData
+        _fruitCartQty.value = 1
+
     }
+
+    fun addQty() {
+        _fruitCartQty.value = _fruitCartQty.value?.plus(1)
+    }
+  fun minusQty() {
+      if (_fruitCartQty.value != 1)
+        _fruitCartQty.value = _fruitCartQty.value?.minus(1)
+    }
+
+
 
 }
