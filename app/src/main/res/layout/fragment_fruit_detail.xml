@@ -150,6 +150,7 @@
                         android:id="@+id/txt_FruitPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{fruitViewModel.str_topView_sellPrice}"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/black"
                         android:textSize="25sp"
@@ -172,13 +173,13 @@
                             android:onClick="@{() -> fruitViewModel.addQty()}"
                             android:background="@color/black"
                             android:src="@drawable/ic_add" />
-<!--
-                            android:text="@{() -> fruitViewModel.fruitCartQty.toString()}"
--->
+
                         <EditText
                             android:id="@+id/et_qtyUpdate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@{ fruitViewModel.fruitCartQty.toString()}"
+
                             android:focusable="false"
                             android:inputType="number"
                              />

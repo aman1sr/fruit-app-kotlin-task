@@ -17,7 +17,6 @@ class FruitDetailViewModel(fruitData: Cdata, app: Application) : AndroidViewMode
     val fruitCartQty : LiveData<Int>
     get() = _fruitCartQty
 
-     var sellPrice: Double = 1.0       // to check best way to intialize
 
      var tax: Double =18.0
      var deliveryRate: Double = 50.0
@@ -29,6 +28,7 @@ class FruitDetailViewModel(fruitData: Cdata, app: Application) : AndroidViewMode
     lateinit var str_topView_TotalQty: String
     lateinit var str_topView_farmerName: String
     lateinit var str_topView_FarmerCompany: String
+    lateinit var str_topView_sellPrice: String
 
     init {
         _fruitDetails.value = fruitData
@@ -39,6 +39,7 @@ class FruitDetailViewModel(fruitData: Cdata, app: Application) : AndroidViewMode
         str_topView_TotalQty = fruitData.totalQty.toString() +" Qty"
         str_topView_farmerName = fruitData.farmerName.toString()
         str_topView_FarmerCompany = fruitData.farmerCompany.toString()
+        str_topView_sellPrice = "Price: "+fruitData.sellPrice.toString()+" ₹"
 
     }
 
