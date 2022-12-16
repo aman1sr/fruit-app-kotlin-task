@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -24,7 +25,13 @@ private val TAG  ="FruitDetail_d"
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentFruitDetailBinding.inflate(layoutInflater)
+//        binding = FragmentFruitDetailBinding.inflate(layoutInflater)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_fruit_detail,
+            container,
+            false)
+
         val application = requireNotNull(activity).application  // todo: what's every line meaning??
         val getFruitDetail = FruitDetailFragmentArgs.fromBundle(requireArguments()).selectedProperty        // getting the data from Navigation Arg
         val viewModelFactory = FruitDetailViewModelFactory(getFruitDetail, application)
@@ -47,11 +54,11 @@ private val TAG  ="FruitDetail_d"
                 .load(it.image)
                 .into(binding.imgFruit)
 
-            binding.txtFruitName.setText(it.name)
-            binding.txtFruitDesc.setText(it.description)
-            binding.txtTotalQty.setText(it.totalQty +"Qty")
-            binding.txtFarmerName.setText(it.farmerName)
-            binding.txtFarmerCompany.setText(it.farmerCompany)
+//            binding.txtFruitName.setText(it.name)
+//            binding.txtFruitDesc.setText(it.description)
+//            binding.txtTotalQty.setText(it.totalQty +"Qty")
+//            binding.txtFarmerName.setText(it.farmerName)
+//            binding.txtFarmerCompany.setText(it.farmerCompany)
 
 
             /* bottom UI */
@@ -67,7 +74,7 @@ private val TAG  ="FruitDetail_d"
 //            binding.txtGrandTotalPrice.setText(grandTotal.toString() + "₹")
             var strSubTotalFormatted = String.format("%.2f",grandTotal).toString()
             binding.txtSubtotal.setText( strSubTotalFormatted+ "₹")         // displaying the subTotal amt
-            binding.etQtyUpdate.setText(it.toInt().toString())
+//            binding.etQtyUpdate.setText(it.toString())              // Observing Qty
 
             var taxAmt = (viewModel.tax/100)*grandTotal
             var totalAmt = taxAmt + viewModel.deliveryRate + grandTotal;        // displaying the Grand total amt
@@ -75,15 +82,7 @@ private val TAG  ="FruitDetail_d"
             binding.txtTotal.setText(strTotalAmtFormat+"₹")
         }
 
-/*      // Using Data Binding instead
 
-        binding.btnImgPlusQty.setOnClickListener {
-            viewModel.addQty()
-        }
-        binding.btnImgMinusQty.setOnClickListener {
-            viewModel.minusQty()
-        }
-*/
 
 
         // Inflate the layout for this fragment

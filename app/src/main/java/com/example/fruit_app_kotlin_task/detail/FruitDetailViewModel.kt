@@ -22,14 +22,23 @@ class FruitDetailViewModel(fruitData: Cdata, app: Application) : AndroidViewMode
      var tax: Double =18.0
      var deliveryRate: Double = 50.0
 
-    lateinit var string: String
     var xyz by Delegates.notNull<Int>()
+
+    lateinit var str_topView_fruitName: String
+    lateinit var str_topView_fruitDesc: String
+    lateinit var str_topView_TotalQty: String
+    lateinit var str_topView_farmerName: String
+    lateinit var str_topView_FarmerCompany: String
 
     init {
         _fruitDetails.value = fruitData
         _fruitCartQty.value = 1
 
-        string = "ast"
+        str_topView_fruitName = fruitData.name.toString()
+        str_topView_fruitDesc = fruitData.description.toString()
+        str_topView_TotalQty = fruitData.totalQty.toString() +" Qty"
+        str_topView_farmerName = fruitData.farmerName.toString()
+        str_topView_FarmerCompany = fruitData.farmerCompany.toString()
 
     }
 
