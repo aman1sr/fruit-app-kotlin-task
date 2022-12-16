@@ -47,35 +47,19 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }
 
-        /* Fetching the Initial Fruit Category data */
+        /*-----------------------------------Fruit_Cat--------------------------------------*/
+
+        /* Fetching the Initial Fruit Category data from --> API */
         viewModel.fruitList.observe(viewLifecycleOwner) {
             val fruitList: FruitModel = it
             adapterFruitCategory.submitList(fruitList?.data)
             binding.rvCategoryFruits.adapter = adapterFruitCategory
 
-        }
-
-
-        /* Updating Fruit List wrt Click on Fruit Cat */
-        viewModel.subFruitList.observe(viewLifecycleOwner) { fruitList ->
-//            adapterFruit = FruitAdapter(fruitList)
-            adapterFruit.submitList(fruitList)
+            // todo: show  initial Fruit list
+            adapterFruit.submitList(it?.data?.get(0)?.cdata)
             binding.rvFruits.adapter = adapterFruit
+
         }
-
-/* reading LIVE DATA , if fruit Detailed is clicked & detailFruit got it's data , --> navigate */
-        viewModel.detailFruit.observe(viewLifecycleOwner, Observer {
-
-            this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFruitDetailFragment(it!!))
-            // article ?. vs !!  (https://blog.mindorks.com/safecalls-vs-nullchecks-in-kotlin)
-        })
-
-        /* OnClick Listener on Specific Fruit  */
-        adapterFruit = FruitAdapter(FruitAdapter.OnClickListener {
-            Log.d(TAG, "Fruit clickedddddddddd>>> ")
-            viewModel.getDetailFruit(it)
-        })
-
 
         /* OnClick Listener on Fruit Category */
         adapterFruitCategory = FruitsCategoryAdapter(FruitsCategoryAdapter.OnClickListener {
@@ -84,6 +68,32 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             viewModel.getSubFruitList(fruitList)
 
         })
+
+        /* Observing LIVEDATA & Updating Fruit List wrt Click  */
+        viewModel.subFruitList.observe(viewLifecycleOwner) { fruitList ->
+//            adapterFruit = FruitAdapter(fruitList)
+            adapterFruit.submitList(fruitList)
+            binding.rvFruits.adapter = adapterFruit
+        }
+
+        /*-----------------------------------Fruit--------------------------------------*/
+        /* OnClick Listener on  Fruit  */
+        adapterFruit = FruitAdapter(FruitAdapter.OnClickListener {
+            Log.d(TAG, "Fruit clickedddddddddd>>> ")
+            viewModel.getDetailFruit(it)
+        })
+
+        /* Observing LIVEDATA, if Fruit is clicked  --> navigate */
+        viewModel.detailFruit.observe(viewLifecycleOwner, Observer {
+
+            this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFruitDetailFragment(it!!))
+            // article ?. vs !!  (https://blog.mindorks.com/safecalls-vs-nullchecks-in-kotlin)
+        })
+
+
+
+
+
 
 
 

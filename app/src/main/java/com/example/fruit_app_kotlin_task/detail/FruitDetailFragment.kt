@@ -45,18 +45,23 @@ private val TAG  ="FruitDetail_d"
 
 
             /* bottom UI */
-            binding.txtFruitPrice.setText("Price: "+it.sellPrice+" Rs")
+            binding.txtFruitPrice.setText("Price: "+it.sellPrice+" ₹")      // setting the price of product
             var price = it.sellPrice?.toDouble()
             viewModel.sellPrice = price!!
-
         }
 
         viewModel.fruitCartQty.observe(viewLifecycleOwner){
             var price = viewModel.sellPrice
             var grandTotal = it*price
-            binding.txtGrandTotalPrice.setText(grandTotal.toString() + "Rs")
-            binding.txtSubtotal.setText(grandTotal.toString() + "Rs")
+//            binding.txtGrandTotalPrice.setText(grandTotal.toString() + "₹")
+            var strSubTotalFormatted = String.format("%.2f",grandTotal).toString()
+            binding.txtSubtotal.setText( strSubTotalFormatted+ "₹")         // displaying the subTotal amt
             binding.etQtyUpdate.setText(it.toInt().toString())
+
+            var taxAmt = (viewModel.tax/100)*grandTotal
+            var totalAmt = taxAmt + viewModel.deliveryRate + grandTotal;        // displaying the Grand total amt
+            var strTotalAmtFormat = String.format("%.2f",totalAmt).toString()
+            binding.txtTotal.setText(strTotalAmtFormat+"₹")
         }
 
         binding.btnImgPlusQty.setOnClickListener {
