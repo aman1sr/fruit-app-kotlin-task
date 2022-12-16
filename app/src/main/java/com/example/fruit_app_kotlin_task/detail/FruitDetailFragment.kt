@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.fruit_app_kotlin_task.R
 import com.example.fruit_app_kotlin_task.databinding.FragmentFruitDetailBinding
@@ -29,6 +30,15 @@ private val TAG  ="FruitDetail_d"
         val viewModelFactory = FruitDetailViewModelFactory(getFruitDetail, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(FruitDetailViewModel::class.java)
 
+        // Set the viewmodel for databinding - this allows the bound layout access
+        // to all the data in the VieWModel
+        binding.fruitViewModel = viewModel
+
+        // Specify the fragment view as the lifecycle owner of the binding.
+        // This is used so that the binding can observe LiveData updates
+        binding.lifecycleOwner = viewLifecycleOwner
+
+
         /* Observing the data received from Prev screen */
         viewModel.fruitDetails.observe(viewLifecycleOwner){
             Log.d(TAG, "fetched data: "+it)
@@ -50,6 +60,7 @@ private val TAG  ="FruitDetail_d"
             viewModel.sellPrice = price!!
         }
 
+        /* Observing the Cart Qty update */
         viewModel.fruitCartQty.observe(viewLifecycleOwner){
             var price = viewModel.sellPrice
             var grandTotal = it*price
@@ -64,13 +75,15 @@ private val TAG  ="FruitDetail_d"
             binding.txtTotal.setText(strTotalAmtFormat+"₹")
         }
 
+/*      // Using Data Binding instead
+
         binding.btnImgPlusQty.setOnClickListener {
             viewModel.addQty()
         }
         binding.btnImgMinusQty.setOnClickListener {
             viewModel.minusQty()
         }
-
+*/
 
 
         // Inflate the layout for this fragment
