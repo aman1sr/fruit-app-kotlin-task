@@ -58,18 +58,18 @@ private val TAG  ="FruitDetail_d"
 
         }
 
-        /* Observing the Cart Qty update */
-        viewModel.fruitCartQty.observe(viewLifecycleOwner){
-            var price = viewModel.fruitDetails.value?.sellPrice?.toDouble()
-            var grandTotal = it* price!!
-            var strSubTotalFormatted = String.format("%.2f",grandTotal).toString()
-            binding.txtSubtotal.setText( strSubTotalFormatted+ "₹")         // displaying the subTotal amt
-
-            var taxAmt = (viewModel.tax/100)*grandTotal
-            var totalAmt = taxAmt + viewModel.deliveryRate + grandTotal;        // displaying the Grand total amt
-            var strTotalAmtFormat = String.format("%.2f",totalAmt).toString()
-            binding.txtTotal.setText(strTotalAmtFormat+"₹")
-        }
+//        /* Observing the Cart Qty update */
+//        viewModel.fruitCartQty.observe(viewLifecycleOwner){
+//            var price = viewModel.fruitDetails.value?.sellPrice?.toDouble()
+//            var grandTotal = it* price!!
+//            var strSubTotalFormatted = String.format("%.2f",grandTotal).toString()
+////            binding.txtSubtotal.setText( strSubTotalFormatted+ "₹")         // displaying the subTotal amt
+//
+//            var taxAmt = (viewModel.tax/100)*grandTotal
+//            var totalAmt = taxAmt + viewModel.deliveryRate + grandTotal;        // displaying the Grand total amt
+//            var strTotalAmtFormat = String.format("%.2f",totalAmt).toString()
+////            binding.txtTotal.setText(strTotalAmtFormat+"₹")
+//        }
 
 
 
