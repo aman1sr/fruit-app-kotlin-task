@@ -2,14 +2,14 @@
 # Food App
 
 basic kotlin challenge , the  app uses API to show fruits category based recommendation 
+follow best Android Arch. Principles ( recommended by google )
 
 ## What's New
-- Extracting the data from LiveData for RecyclerView ( surviving the Rotation now)
+- implemented DataBinding library in FruitDetailFragment
  
 ## Todo
 - add horizontal PB (in HomeFragment - viewModel.loading) , to track progress  1-100%
 - add Swipe Refresh on RecView (in HomeFragment)
-- survive device Rotation Changes
 - integrate  [Open AI APIs](https://beta.openai.com/overview)
 - 
 - make the detail Fruit UI  having custom LandScape mode
@@ -19,6 +19,11 @@ basic kotlin challenge , the  app uses API to show fruits category based recomme
 
 ## NOTES Src:
 
+
+- RecView ClickListener on item
+  - [CodeLab(guessTheWordApp)-DataBinding](https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding?index=..%2F..android-kotlin-fundamentals#1)
+  - [layout and Bidning Expression](https://developer.android.com/topic/libraries/data-binding/expressions#listener_bindings)
+  - [CodeLab - DataBinding project ](https://developer.android.com/codelabs/android-databinding?hl=en#0)
 
 - RecView ClickListener on item
   - [Joel bro-Section.io](https://www.section.io/engineering-education/handling-recyclerview-clicks-the-right-way/)
