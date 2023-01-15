@@ -49,7 +49,7 @@ class HomeViewModel : ViewModel() {
 
 
     init {
-        getfruitList()
+//        getfruitList()        // todo: stopping it from calling API , (not working)
         _loading.value = true
     }
 
