@@ -5,12 +5,16 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
     id 'androidx.navigation.safeargs' version '2.5.3' apply false
     id 'org.jetbrains.kotlin.jvm' version '1.7.21' apply false
+
 }
      ext {
          retrofit_version = "2.9.0"
         kotlin_version = "1.7.10"
          moshi_version  = "1.11.0"
     }
-    dependencies {
+ allprojects {
+     dependencies {
+         // put here dependencies , to available in all projects
 
-    }
+     }
+ }

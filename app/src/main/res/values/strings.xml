@@ -1,7 +1,19 @@
 <resources>
-    <string name="app_name">fruit-app-kotlin-task</string>
-    <string name="app_name_real">Fruit App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="str_search_hint">Search item by Name</string>
+    <string name="app_name">conduit</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_logout">Logout</string>
+
+    <string name="menu_feed">Feed</string>
+    <string name="menu_my_feed">My Feed</string>
+    <string name="menu_auth">Login / Signup</string>
+    <string name="menu_settings">Settings</string>
+    <string name="create_article">New Article</string>
+
+
+    <string name="arg_article_id">ARTICLE_ID</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.example.fruit_app_kotlin_task.adapter
 
 import android.text.Layout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +47,7 @@ class FruitsCategoryAdapter(private val onClickListener: OnClickListener) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val fruit = getItem(position)       // todo: check this
-
+        Log.d("checkAdapter", "onBindViewHolder: "+position+", fruit: "+fruit)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(fruit.cdata)            // sending data to click listener
         }
